@@ -32,3 +32,12 @@ def process_emails(email_list):
             "domain": domain
         })
     return results
+def is_m365_domain(domain):
+    try:
+        answers = dns.resolver.resolve(domain, 'MX')
+        for rdata in answers:
+            if 'mail.protection.outlook.com' in str(rdata.exchange):
+                return True
+    except:
+        return False
+    return False
