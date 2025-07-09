@@ -10,10 +10,15 @@
 <body class="bg-gray-100 text-gray-900">
   <div class="max-w-2xl mx-auto mt-10 p-4 bg-white rounded-xl shadow">
     <h1 class="text-2xl font-bold mb-4">Email Verifier & Sorter</h1>
+    
     <textarea id="emailInput" rows="6" class="w-full p-2 border rounded" placeholder="Paste emails here..."></textarea>
-    <p class="text-center my-2">OR</p>
+    
+    <p class="text-center my-2 text-sm text-gray-500">OR</p>
+    
     <input type="file" id="csvFile" accept=".csv" class="mb-4"/>
+    
     <button id="submitBtn" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Verify</button>
+    
     <div id="results" class="mt-6"></div>
   </div>
 </body>
