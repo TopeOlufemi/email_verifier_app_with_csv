@@ -2,3 +2,4 @@ fastapi
 uvicorn
 email-validator
 dnspython
+python-multipart
