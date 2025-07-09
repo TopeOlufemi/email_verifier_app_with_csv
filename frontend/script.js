@@ -40,11 +40,12 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
   `;
 
   document.getElementById('downloadBtn').addEventListener('click', () => {
-    const csvRows = ["email,valid_syntax,mx_record,domain,m365_account"];
-    data.forEach(row => {
-      csvRows.push(`${row.email},${row.valid_syntax},${row.mx_record},${row.domain},${row.m365_account}`);
-    });
-    const csvBlob = new Blob([csvRows.join("\\n")], { type: 'text/csv' });
+   const csvRows = ["email,valid_syntax,mx_record,domain,m365_account"];
+data.forEach(row => {
+  csvRows.push(`${row.email},${row.valid_syntax},${row.mx_record},${row.domain},${row.m365_account}`);
+});
+const csvContent = csvRows.join("\n");  // Use real newlines here
+const csvBlob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(csvBlob);
     const a = document.createElement('a');
     a.href = url;
