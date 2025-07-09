@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Verifier</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-2xl mx-auto mt-10 p-4 bg-white rounded-xl shadow">
+    <h1 class="text-2xl font-bold mb-4">Email Verifier & Sorter</h1>
+    <textarea id="emailInput" rows="6" class="w-full p-2 border rounded" placeholder="Paste emails here..."></textarea>
+    <p class="text-center my-2">OR</p>
+    <input type="file" id="csvFile" accept=".csv" class="mb-4"/>
+    <button id="submitBtn" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Verify</button>
+    <div id="results" class="mt-6"></div>
+  </div>
+</body>
+</html>
