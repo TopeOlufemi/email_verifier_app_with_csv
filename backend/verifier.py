@@ -14,6 +14,16 @@ def has_mx_record(domain):
     except:
         return False
 
+def is_m365_domain(domain):
+    try:
+        answers = dns.resolver.resolve(domain, 'MX')
+        for rdata in answers:
+            if 'mail.protection.outlook.com' in str(rdata.exchange):
+                return True
+    except:
+        return False
+    return False
+
 def process_emails(email_list):
     seen = set()
     results = []
@@ -25,20 +35,12 @@ def process_emails(email_list):
         syntax = is_valid_syntax(email)
         domain = email.split('@')[-1] if syntax else None
         mx = has_mx_record(domain) if domain else False
+        m365 = is_m365_domain(domain) if domain else False
         results.append({
             "email": email,
             "valid_syntax": syntax,
             "mx_record": mx,
-            "domain": domain
-            "m365_account": is_m365_domain(domain)
+            "domain": domain,
+            "m365_account": m365
         })
     return results
-def is_m365_domain(domain):
-    try:
-        answers = dns.resolver.resolve(domain, 'MX')
-        for rdata in answers:
-            if 'mail.protection.outlook.com' in str(rdata.exchange):
-                return True
-    except:
-        return False
-    return False
