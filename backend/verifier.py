@@ -30,6 +30,7 @@ def process_emails(email_list):
             "valid_syntax": syntax,
             "mx_record": mx,
             "domain": domain
+            "m365_account": is_m365_domain(domain)
         })
     return results
 def is_m365_domain(domain):
