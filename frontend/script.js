@@ -26,12 +26,13 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
       <td>${row.valid_syntax}</td>
       <td>${row.mx_record}</td>
       <td>${row.domain}</td>
+      <td>${row.m365_account ? "✅" : "❌"}</td>
     </tr>`).join('');
 
   resultsDiv.innerHTML = `
     <table class="w-full mt-4 border">
       <thead>
-        <tr><th>Email</th><th>Valid Syntax</th><th>MX Record</th><th>Domain</th></tr>
+        <tr><th>Email</th><th>Valid Syntax</th><th>MX Record</th><th>Domain</th><th>M365</th></tr>
       </thead>
       <tbody>${tableRows}</tbody>
     </table>
@@ -39,11 +40,11 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
   `;
 
   document.getElementById('downloadBtn').addEventListener('click', () => {
-    const csvRows = ["email,valid_syntax,mx_record,domain"];
+    const csvRows = ["email,valid_syntax,mx_record,domain,m365_account"];
     data.forEach(row => {
-      csvRows.push(`${row.email},${row.valid_syntax},${row.mx_record},${row.domain}`);
+      csvRows.push(`${row.email},${row.valid_syntax},${row.mx_record},${row.domain},${row.m365_account}`);
     });
-    const csvBlob = new Blob([csvRows.join("\n")], { type: 'text/csv' });
+    const csvBlob = new Blob([csvRows.join("\\n")], { type: 'text/csv' });
     const url = URL.createObjectURL(csvBlob);
     const a = document.createElement('a');
     a.href = url;
