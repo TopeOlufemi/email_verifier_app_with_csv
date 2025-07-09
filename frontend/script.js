@@ -12,7 +12,7 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
     return;
   }
 
-  const res = await fetch('https://your-backend-url.onrender.com/verify/', {
+  const res = await fetch('https://email-verifier-backend-f74v.onrender.com/verify/', {
     method: 'POST',
     body: formData
   });
